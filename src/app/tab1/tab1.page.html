@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title style="float: right"> {{categoryName}} </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,5 +11,22 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+  <swiper-container
+    #swiperRef
+    initial-slide="0"
+    (activeindexchange)="onActiveIndexChange()"
+    slides-per-view="1"
+  >
+    <swiper-slide *ngFor="let item of categoryListWithDetail">
+      <h1>{{item.name}}</h1>
+    </swiper-slide>
+    <swiper-slide>
+      <h6>جدید</h6>
+    </swiper-slide>
+  </swiper-container>
 </ion-content>
+
+<a id="scrollTop" (click)="addCategory()">
+  <ion-icon size="large" name="add-outline"></ion-icon>
+</a>
