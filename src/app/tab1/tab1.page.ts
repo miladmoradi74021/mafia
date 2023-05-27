@@ -1,4 +1,10 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  ClassicMafia,
+  Game,
+  GameService,
+  Player,
+} from 'src/services/game.service';
 import { register } from 'swiper/element/bundle';
 import { Swiper } from 'swiper/types';
 @Component({
@@ -7,27 +13,37 @@ import { Swiper } from 'swiper/types';
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page {
-
   categoryName: string = 'دسته مافیا';
-
+  tp: string = "";
   categoryListWithDetail: any[] = [
     {
-      name:'کلاسیک'
+      name: 'کلاسیک',
     },
     {
-      name:'روسی'
+      name: 'روسی',
     },
     {
-      name:'پیشرفته'
+      name: 'پیشرفته',
     },
   ];
 
-  constructor() {}
+  classic = new ClassicMafia();
+  roles: any = [];
+  game: Game;
 
-  addCategory(){
-
+  constructor(private gameService: GameService) {
+    this.roles = this.classic.roles;
+    this.game = new Game(
+      this.classic,
+      new Player('Alireza', this.classic.roles[0]),
+      new Player('Milad', this.classic.roles[1]),
+      new Player('Vahid', this.classic.roles[2])
+    );
+    debugger;
   }
-  
+
+  addCategory() {}
+
   @ViewChild('swiperRef')
   swiperRef: ElementRef | undefined;
   swiper?: Swiper;

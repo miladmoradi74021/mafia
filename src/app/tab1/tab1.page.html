@@ -18,9 +18,35 @@
     (activeindexchange)="onActiveIndexChange()"
     slides-per-view="1"
   >
-    <swiper-slide *ngFor="let item of categoryListWithDetail">
-      <h1>{{item.name}}</h1>
+    <swiper-slide>
+      <h1>{{game.type.name}}</h1>
+      <ul *ngFor="let player of game.players">
+        <li>{{player.name}}</li>
+        <li>{{player.status}}</li>
+        <li>{{player.role.name}}</li>
+        <li>
+          <ul *ngFor="let action of player.role.actions">
+            <li><input type="text" [(ngModel)]="tp" /></li>
+            <li>
+              <button (click)="action.invoke(game,tp)">{{action.name}}</button>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </swiper-slide>
+
+    <swiper-slide *ngFor="let category of categoryListWithDetail">
+      <h1>{{category.name}}</h1>
+      <ul *ngFor="let item of roles">
+        <li>{{item.name}}</li>
+        <li>
+          <ul *ngFor="let i of item.actions">
+            <li><button>{{i.name}}</button></li>
+          </ul>
+        </li>
+      </ul>
+    </swiper-slide>
+
     <swiper-slide>
       <h6>جدید</h6>
     </swiper-slide>
