@@ -1,10 +1,10 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import {
-  ClassicMafia,
-  Game,
   GameService,
-  Player,
 } from 'src/services/game.service';
+import { Game } from 'src/services/Game';
+import { ClassicScenario } from 'src/services/scenarios/ClassicScenario';
+import { Player } from 'src/services/Player';
 import { register } from 'swiper/element/bundle';
 import { Swiper } from 'swiper/types';
 @Component({
@@ -27,7 +27,7 @@ export class Tab1Page {
     },
   ];
 
-  classic = new ClassicMafia();
+  classic = new ClassicScenario();
   roles: any = [];
   game: Game;
 
