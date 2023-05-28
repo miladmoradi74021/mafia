@@ -20,7 +20,7 @@
   >
     <swiper-slide>
       <h1>{{game.type.name}}</h1>
-      <ul *ngFor="let player of game.players">
+      <!-- <ul *ngFor="let player of game.players">
         <li>{{player.name}}</li>
         <li>{{player.status}}</li>
         <li>{{player.role.name}}</li>
@@ -32,19 +32,14 @@
             </li>
           </ul>
         </li>
-      </ul>
-    </swiper-slide>
+      </ul> -->
 
-    <swiper-slide *ngFor="let category of categoryListWithDetail">
-      <h1>{{category.name}}</h1>
-      <ul *ngFor="let item of roles">
-        <li>{{item.name}}</li>
-        <li>
-          <ul *ngFor="let i of item.actions">
-            <li><button>{{i.name}}</button></li>
-          </ul>
-        </li>
-      </ul>
+      <div class="gshres">
+        <a *ngFor="let player of game.players">
+          <span>{{player.name}}</span>
+          <span>{{player.role.name}}</span>
+        </a>
+      </div>
     </swiper-slide>
 
     <swiper-slide>

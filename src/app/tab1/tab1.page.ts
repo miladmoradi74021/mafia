@@ -37,7 +37,8 @@ export class Tab1Page {
       this.classic,
       new Player('Alireza', this.classic.roles[0]),
       new Player('Milad', this.classic.roles[1]),
-      new Player('Vahid', this.classic.roles[2])
+      new Player('Vahid', this.classic.roles[2]),
+      new Player('khashi', this.classic.roles[2]),
     );
     debugger;
   }
